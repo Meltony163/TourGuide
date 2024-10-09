@@ -8,6 +8,6 @@
 #ifndef RCC_PRV_H_
 #define RCC_PRV_H_
 
-#define RCC_HSE_FREQ						8
+#define RCC_HSE_FREQ						12
 
 #endif /* RCC_PRV_H_ */

@@ -187,11 +187,11 @@ ES_t RCC_enuGetSysClkType(RCC_SysClk_t *Copy_penuSysClk)
 {
 	ES_t Local_enuErrorState =ES_OK;
 
-	if(((RCC->CFGR)*RCC_CLK_MASK)==0)
+	if(((RCC->CFGR)&RCC_CLK_MASK)==0)
 	{
 		*Copy_penuSysClk=RCC_SYSCLK_HSI;
 	}
-	else if(((RCC->CFGR)*RCC_CLK_MASK)==1)
+	else if(((RCC->CFGR)&RCC_CLK_MASK)==1)
 	{
 		if((GET_BIT(RCC->CR,RCC_CR_HSEBYP))!=0)
 		{
@@ -202,7 +202,7 @@ ES_t RCC_enuGetSysClkType(RCC_SysClk_t *Copy_penuSysClk)
 			*Copy_penuSysClk=RCC_SYSCLK_HSE_RC;
 		}
 	}
-	else if(((RCC->CFGR)*RCC_CLK_MASK)==2)
+	else if(((RCC->CFGR)&RCC_CLK_MASK)==2)
 	{
 		*Copy_penuSysClk=RCC_SYSCLK_PLL;
 	}
@@ -217,15 +217,15 @@ ES_t RCC_enuGetSysClkValue(u32 *Copy_pu32SysClkValue)
 {
 	ES_t Local_enuErrorState =ES_OK;
 
-	if(((RCC->CFGR)*RCC_CLK_MASK)==0)
+	if(((RCC->CFGR)&RCC_CLK_MASK)==0)
 	{
 		*Copy_pu32SysClkValue=8;
 	}
-	else if(((RCC->CFGR)*RCC_CLK_MASK)==1)
+	else if(((RCC->CFGR)&RCC_CLK_MASK)==1)
 	{
 		*Copy_pu32SysClkValue=RCC_HSE_FREQ;
 	}
-	else if(((RCC->CFGR)*RCC_CLK_MASK)==2)
+	else if(((RCC->CFGR)&RCC_CLK_MASK)==2)
 	{
 		if((GET_BIT(RCC->CFGR,RCC_CFGR_PLLSRC))!=0)
 		{
